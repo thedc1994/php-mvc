@@ -4,7 +4,7 @@
  *Code Owner: Tke / Phone: 0367313134 / Email: thedc.it.94@gmail.com
  */
 
-define('APP_DOMAIN','http://mvc.test/');
+define('APP_DOMAIN','http://php-mvc.git.test/');
 
 // define connect database
 define('DB_HOST','127.0.0.1');
