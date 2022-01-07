@@ -28,6 +28,8 @@ class Model{
 	
     public function create($data){
 
+        $data['created_at'] = date("Y-m-d H:i:s");
+        $data['updated_at'] = date("Y-m-d H:i:s");
 
         foreach($data as $key => $value){
             if(!in_array($key,$this->attributes)){
@@ -54,6 +56,9 @@ class Model{
     }
 
     public function update($data){
+
+        $data['updated_at'] = date("Y-m-d H:i:s");
+
         foreach($data as $key => $value){
             if(!in_array($key,$this->attributes)){
                 unset($data[$key]);
@@ -73,11 +78,10 @@ class Model{
     }
 
     public function find($id){
-
-        $req = $this->db->prepare('SELECT * FROM '.$this->table.' WHERE id = :id and deleted_at <> NULL');
-        $req->execute(array('id' => $id));
+        $query = "SELECT * FROM ".$this->table." WHERE id=? AND ISNULL(deleted_at)";
+        $req = $this->db->prepare($query);
+        $req->execute([$id]);
         $modelAttributes = $req->fetch();
-
         if(!$modelAttributes){
             return null;
         }
@@ -98,9 +102,9 @@ class Model{
 
     public function getList($statements=[], $addQuery = ''){
 
+
         $query = "SELECT * FROM {$this->table} WHERE ".implode(' AND ',$statements). " AND ISNULL(deleted_at) ".$addQuery;
         $listModels = $this->db->query($query)->fetchAll();
-
         return array_map(function($model){
             $user = new User();
             $user->setAttributes($model);

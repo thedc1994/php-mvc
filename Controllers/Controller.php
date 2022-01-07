@@ -32,4 +32,14 @@ class Controller{
 
       	require_once($viewFile);
 	}
+
+	public function response($data=array()){
+        echo json_encode($data, false);
+        die();
+    }
+
+    public function redirect($url){
+        header('Location: '.$url);
+        die();
+    }
 }

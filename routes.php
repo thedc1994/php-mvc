@@ -25,13 +25,27 @@ const CONTROLLERS = array(
     ],
 
     [
+        'method'  => 'GET',
+        'url'     => '/show-login',
+        'name'    => 'auth.show-login',
+        'use'     => 'AuthController',
+        'action'  => 'showLogin'
+    ],
+
+    [
       'method'  => 'POST',
       'url'     => '/register',
       'name'    => 'auth.register',
       'use'     => 'AuthController',
       'action'  => 'register'
-    ]
+    ],
 
-
+    [
+        'method'  => 'POST',
+        'url'     => '/check-username',
+        'name'    => 'auth.check-duplicate-username',
+        'use'     => 'AuthController',
+        'action'  => 'checkUsername'
+    ],
 
 ); 

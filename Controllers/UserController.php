@@ -2,6 +2,8 @@
 require_once('Controllers/Controller.php');
 require_once('Repositories/UserRepository.php');
 
+require_once('Models/User.php');
+
 class UserController extends Controller{
 
     protected $repository;
@@ -21,12 +23,12 @@ class UserController extends Controller{
 		$user = (new User())->find($this->data['user_id']);
 
 		if(is_null($user)){
-		    alert('User not found');
-		    return;
+		    return $this->response([
+		        'message' => 'Không tìm thấy người dùng'
+            ]);
         }
 
-		$user = $this->repository->update($user);
-
+		return $this->view('profile',compact('user'));
 
 	}
 
