@@ -1,7 +1,7 @@
 <?php include 'views/layouts/master.php' ?>
 
 <?php startblock('title') ?>
-    Trang đăng ký
+    Trang chủ
 <?php endblock() ?>
 
 <?php startblock('css') ?>
@@ -13,27 +13,7 @@
 
 
 <?php startblock('content') ?>
-    <div class="col-2">
-    </div>
-    <div class="col-4">
-        <form action="<?php echo Route::name('auth.register');?>" method="POST"  id="register-form">
-            <div class="row form-group">
-                <label>Tên tài khoản</label>
-                <input type="text" class="form-control username" placeholder="Nhập tên tài khoản" name="username" value="">
-                <span class="help-block username-validate" />
-            </div>
-            <div class="row form-group">
-                <button class="btn btn-success" type="submit">
-                    ĐĂNG KÝ
-                </button>
 
-                <button class="btn btn-success" type="button" onclick="registerForm('register-form');">
-                    ĐĂNG KÝ QUA AJAX
-                </button>
-
-            </div>
-        </form>
-    </div>
 <?php endblock() ?>
 
 <?php startblock('script') ?>

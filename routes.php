@@ -33,6 +33,14 @@ const CONTROLLERS = array(
     ],
 
     [
+        'method'  => 'POST',
+        'url'     => '/login',
+        'name'    => 'auth.login',
+        'use'     => 'AuthController',
+        'action'  => 'login'
+    ],
+
+    [
       'method'  => 'POST',
       'url'     => '/register',
       'name'    => 'auth.register',
@@ -46,6 +54,14 @@ const CONTROLLERS = array(
         'name'    => 'auth.check-duplicate-username',
         'use'     => 'AuthController',
         'action'  => 'checkUsername'
+    ],
+
+    [
+        'method'  => 'GET',
+        'url'     => '/edit-profile',
+        'name'    => 'edit-profile',
+        'use'     => 'AuthController',
+        'action'  => 'editProfile'
     ],
 
 ); 

@@ -11,10 +11,7 @@ class HomeController extends Controller{
 
     public function index(){
 
-        $users = (new User())->getList([
-            "id > 2", "username like '%thedc%'"
-        ]);
-
+        $_SESSION['save'] = '1';
         return $this->view('home');
     }
 

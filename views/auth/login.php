@@ -23,7 +23,36 @@
         <div class="row">
             <!--    LOGIN FORM-->
             <div class="col-6">
+                <form action="<?php echo Route::name('auth.login');?>" method="POST" id="login-form">
+                    <div class="row form-group col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Tên tài khoản</span>
+                            </div>
+                            <input type="text" class="form-control username" name="username" value="">
+                        </div>
+                        <span class="help-block login-username-validate" />
+                    </div>
 
+                    <div class="row form-group col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Mật khẩu</span>
+                            </div>
+                            <input type="password" class="form-control password" name="password" value="">
+                        </div>
+                        <span class="help-block login-password-validate" />
+                    </div>
+
+                    <div class="row form-group col-12">
+                        <button class="btn btn-success btn-block" type="submit">
+                            ĐĂNG NHẬP
+                        </button>
+                    </div>
+                    <a href="<?php echo Route::name('home');?>">
+                        Về trang chủ
+                    </a>
+                </form>
             </div>
             <!--    END LOGIN FORM-->
 
@@ -99,7 +128,7 @@
 
 
                     <div class="row form-group">
-                        <button class="btn btn-success btn-block" type="submit">
+                        <button class="btn btn-info btn-block" type="submit">
                             ĐĂNG KÝ
                         </button>
                     </div>
@@ -121,6 +150,7 @@
     <script>
         $(document).ready(function(){
             validateRegisterForm();
+            validateLoginForm();
         });
     </script>
 <?php endblock() ?>

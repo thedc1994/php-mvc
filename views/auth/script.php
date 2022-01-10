@@ -122,4 +122,48 @@
             }
         });
     }
+
+    function validateLoginForm(){
+        
+        $('#login-form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    container: '.login-username-validate',
+                    validators: {
+                        notEmpty: {
+                            message: 'Cần phải nhập tên tài khoản'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'Tên tài khoản phải từ 6-30 ký tự'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: 'Tên tài khoản không được chứa ký tự đặc biệt'
+                        },
+                        different: {
+                            field: 'password',
+                            message: 'Tên tài khoản không được giống mật khẩu'
+                        }
+                    }
+                },
+
+                password: {
+                    container: '.login-password-validate',
+                    validators: {
+                        notEmpty: {
+                            message: 'Cần phải nhập mật khẩu'
+                        }
+                    }
+                }
+            }
+        });
+    }
 </script>
