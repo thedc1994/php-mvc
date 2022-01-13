@@ -18,8 +18,7 @@ class Authenticate{
         }
 
         // TODO: LƯU LẠI NGƯỜI DÙNG VỪA ĐĂNG NHẬP
-        (new Session())->setAuthUser($users[0]);
-        return $users[0];
+        return Auth::setUser($users[0]);
     }
 
 }

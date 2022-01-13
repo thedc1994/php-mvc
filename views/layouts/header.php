@@ -2,23 +2,42 @@
 	<div class="col-9">
 	</div>
 	<div class="col-3">
-		<label class="label-user-fullname">
-			<?php
-				if(Auth::checkAuth()){
-			?>
-				<a href="<?php echo Route::name('edit-profile')?>">
+		<div class="row">
+			<div class="col-6">
+				<label class="label-user-fullname">
 					<?php
-						echo Auth::user()->getFullName();
+						if(Auth::checkAuth()){
 					?>
-				</a>
+						<a href="<?php echo Route::name('edit-profile')?>">
+							<?php
+								echo Auth::user()->getFullName();
+							?>
+						</a>
 
-			<?php
-				}else if(isset($_SESSION['save'])){
-					echo 'USER 1';
-				}else{
-					echo 'NO USER';
-				}
-			?>
-		</label>
+					<?php
+						}else{
+					?>
+						<a href="<?php echo Route::name('auth.show-login')?>">
+							Đăng nhập
+						</a>
+					<?php
+						}
+					?>
+				</label>
+			</div>
+			<div class="col-6">
+				<?php
+					if(Auth::checkAuth()){
+				?>
+					<a href="<?php echo Route::name('logout')?>">
+						Đăng xuất
+					</a>
+				<?php
+					}
+				?>
+			</div>
+		</div>
+		
 	</div>
 </div>
+

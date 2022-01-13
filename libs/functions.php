@@ -51,3 +51,8 @@ function asset($path){
 
     return APP_DOMAIN.$path;
 }
+
+function dateFormat($stringDate, $format='d-m-Y'){
+    $date=date_create($stringDate);
+    return date_format($date,$format);
+}

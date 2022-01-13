@@ -7,8 +7,6 @@ session_save_path('session');
         'read_and_close' => true,
     ));
 
-echo 'session id: '.session_id();
-print_r($_SESSION);
 
 require_once('connection.php');
 require_once('routes.php');

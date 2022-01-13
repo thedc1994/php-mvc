@@ -1,0 +1,1 @@
+{"test_session_2":"TEST SESSION 2","auth_user":{"id":"11","0":"11","username":"thedc_123","email":"thedc.it.94@gmail.com","password":"e10adc3949ba59abbe56e057f20f883e","first_name":"The","middle_name":"Cong","last_name":"Dinh","date_of_birth":"2022-01-07","avatar":null,"created_at":"2022-01-10 14:24:37","updated_at":"2022-01-10 14:24:37","deleted_at":null}}

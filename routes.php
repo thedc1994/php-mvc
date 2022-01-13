@@ -41,6 +41,14 @@ const CONTROLLERS = array(
     ],
 
     [
+        'method'  => 'GET',
+        'url'     => '/logout',
+        'name'    => 'logout',
+        'use'     => 'AuthController',
+        'action'  => 'logout'
+    ],
+
+    [
       'method'  => 'POST',
       'url'     => '/register',
       'name'    => 'auth.register',

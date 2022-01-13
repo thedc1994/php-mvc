@@ -18,6 +18,11 @@ class AuthController extends Controller{
     }
 
     public function showLogin(){
+
+        if(Auth::checkAuth()){
+            return $this->redirect(Route::name('home'));
+        }
+
         $_SESSION['test_session'] = 'TEST SESSION';
         return $this->view('auth/login');
     }
@@ -42,10 +47,7 @@ class AuthController extends Controller{
                 'message' => 'Sai tên tài khoản hoặc mật khẩu'
             ]);
         }
-        $_SESSION['save'] = '1';
-        echo '<br/>session id: '.session_id().'<br/>';
-        print_r($_SESSION);
-        return $this->view('home');
+
         return $this->redirect(Route::name('home'));
     }
 
@@ -84,7 +86,13 @@ class AuthController extends Controller{
     }
 
     public function editProfile(){
-        return $this->view('profile');
+        $user = Auth::user();
+        return $this->view('profile',compact('user'));
+    }
+
+    public function logout(){
+        Auth::logout();
+        return $this->redirect(Route::name('home'));
     }
 
 }
