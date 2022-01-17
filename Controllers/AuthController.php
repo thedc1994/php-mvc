@@ -90,6 +90,19 @@ class AuthController extends Controller{
         return $this->view('profile',compact('user'));
     }
 
+    public function updateProfile(){
+
+        $user = Auth::user();
+
+        // TODO SOMETHING validate data
+        $names = $this->userRepository->analysisName($this->data['fullname']);
+        $this->data = array_merge($this->data, $names);
+
+        $user = $this->userRepository->updateUser($user, $this->data);
+        Auth::setUser($user);
+        return $this->editProfile();
+    }
+
     public function logout(){
         Auth::logout();
         return $this->redirect(Route::name('home'));

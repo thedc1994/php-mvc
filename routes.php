@@ -72,4 +72,12 @@ const CONTROLLERS = array(
         'action'  => 'editProfile'
     ],
 
+    [
+        'method'  => 'POST',
+        'url'     => '/update-profile',
+        'name'    => 'update-profile',
+        'use'     => 'AuthController',
+        'action'  => 'updateProfile'
+    ],
+
 ); 

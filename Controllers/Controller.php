@@ -13,7 +13,7 @@ class Controller{
     $route = new Route();
     $currentRoute = $route->getCurrentRoute();
     $getData = $currentRoute['parameters'];
-    return array_merge($getData, $_POST);
+    return array_merge($getData, $_POST, $_FILES);
   }
 
 	public function view($file, $data = array())

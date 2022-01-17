@@ -5,7 +5,7 @@ class User extends Model{
 
     protected $table = 'users';
 
-    protected $defaul_avatar = 'public/avatar/NOIMAGE.jpg';
+    protected $default_avatar = 'public/avatar/NOIMAGE.jpg';
 
     protected $attributes = [
 
@@ -31,8 +31,8 @@ class User extends Model{
 
     public function getAvatar(){
 
-        if(is_null($this->avatar) || trim($this->avatar) !==  '' || !file_exists($this->avatar)){
-            return asset($this->defaul_avatar);
+        if(is_null($this->avatar) || trim($this->avatar) ==  '' || !file_exists($this->avatar)){
+            return asset($this->default_avatar);
         }
 
         return asset($this->avatar);

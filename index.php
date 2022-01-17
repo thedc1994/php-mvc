@@ -15,6 +15,7 @@ require_once('libs/functions.php');
 require_once('libs/Route.php');
 require_once('libs/Session.php');
 require_once('libs/Auth.php');
+require_once('libs/File.php');
 
 $route = new Route();
 $currentRoute = $route->getCurrentRoute();

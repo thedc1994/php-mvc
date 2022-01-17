@@ -23,11 +23,11 @@
 
 
 <?php startblock('content') ?>
-	
+
 		<div class="col-3">
 		</div>
 		<div class="col-6">
-			<form action="<?php echo Route::name('auth.register');?>" method="POST"  id="edit-user-form">
+			<form action="<?php echo Route::name('update-profile');?>" method="POST"  id="edit-user-form" enctype="multipart/form-data">
 
                 <div class="row form-group" align="center">
                 	<img src="<?php echo $user->getAvatar()?>" class="avatar"/>
@@ -37,11 +37,9 @@
                 <div class="row form-group">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Tên tài khoản</span>
+                            <span class="input-group-text" id="basic-addon1">Tên tài khoản : <?php echo $user->username ?></span>
                         </div>
-                        <input type="text" class="form-control username" name="username" value="<?php echo $user->username ?>">
                     </div>
-                    <span class="help-block username-validate" />
                 </div>
 
                 <div class="row form-group">
@@ -80,9 +78,17 @@
                 </div>
 
                 <div class="row form-group">
-                    <button class="btn btn-info btn-block" type="submit">
-                        CẬP NHẬT
-                    </button>
+                    <div class="col-6">
+                        <button class="btn btn-info btn-block" type="submit">
+                            CẬP NHẬT
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-info btn-block" type="button" onclick="updateUser(this.parentElement.parentElement.parentElement);">
+                            CẬP NHẬT QUA AJAX
+                        </button>
+                    </div>
+
                 </div>
             </form>
 		</div>
@@ -103,6 +109,35 @@
 			initImageFile(imageAvatar, imageInput);
 
 		}
+
+		function updateUser(form){
+
+		    var form = $(form);
+
+		    console.log(form);
+		    var data = {
+		        'email' : form.find('.email').first().val(),
+                'fullname': form.find('.email').first().val(),
+                'date_of_birth': form.find('.date-of-birth').first().val(),
+                'avatar': form.find('.avatar').first().attr('src'),
+            };
+
+		    console.log(data);
+
+            // gửi ajax
+            $.ajax({
+                url: "<?php echo Route::name('update-profile');?>",
+                type: "POST",
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function () {
+
+                }
+            });
+
+        }
 
 		$(document).ready(function(){
 
