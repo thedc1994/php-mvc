@@ -102,8 +102,11 @@ class Model{
 
     public function getList($statements=[], $addQuery = ''){
 
+        $statementsText = empty($statements) ? "WHERE" :
+            "WHERE ".implode(' AND ',$statements). " AND";
 
-        $query = "SELECT * FROM {$this->table} WHERE ".implode(' AND ',$statements). " AND ISNULL(deleted_at) ".$addQuery;
+        $query = "SELECT * FROM {$this->table} ".$statementsText." ISNULL(deleted_at) ".$addQuery;
+
         $listModels = $this->db->query($query)->fetchAll();
         return array_map(function($model){
             $user = new User();

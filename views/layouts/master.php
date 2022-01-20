@@ -23,7 +23,7 @@
 
     <?php include 'views/layouts/header.php' ?>
 
-    <div class="row" style="margin-top: 100px;">
+    <div class="row" style="padding: 50px;">
         <?php startblock('content') ?>
         <?php endblock() ?>
     </div>

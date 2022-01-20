@@ -37,4 +37,9 @@ class User extends Model{
 
         return asset($this->avatar);
     }
+
+    public function getDateOfBirth(){
+        return is_null($this->date_of_birth) || trim($this->date_of_birth) == "" ? "" :
+            dateFormat($this->date_of_birth);
+    }
 }

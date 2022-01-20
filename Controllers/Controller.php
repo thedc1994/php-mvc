@@ -31,6 +31,8 @@ class Controller{
       	$content = ob_get_clean();
 
       	require_once($viewFile);
+
+      	return true;
 	}
 
 	public function response($data=array()){

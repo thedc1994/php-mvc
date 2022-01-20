@@ -80,4 +80,13 @@ const CONTROLLERS = array(
         'action'  => 'updateProfile'
     ],
 
+    // routers for admin
+    [
+        'method'  => 'GET',
+        'url'     => '/admin/users',
+        'name'    => 'admin.users',
+        'use'     => 'Admin/UsersController',
+        'action'  => 'index'
+    ],
+
 ); 

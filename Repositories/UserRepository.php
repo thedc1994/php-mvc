@@ -102,4 +102,8 @@ class UserRepository
     }
 
 
+    public function getAllUser(){
+        return (new User())->getList([],"ORDER BY 'first_name'");
+    }
+
 }

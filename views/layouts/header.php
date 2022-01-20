@@ -1,14 +1,16 @@
 <div class="row header">
-	<div class="col-9">
+	<div class="col-8">
+        <?php include('views/menu.php'); ?>
 	</div>
-	<div class="col-3">
-		<div class="row">
+	<div class="col-4">
+		<div class="row right-header">
 			<div class="col-6">
-				<label class="label-user-fullname">
+				<label>
 					<?php
 						if(Auth::checkAuth()){
 					?>
-						<a href="<?php echo Route::name('edit-profile')?>">
+                        <img src="<?php echo Auth::user()->getAvatar();?>" class="avatar">
+						<a  class="label-user-full-name" href="<?php echo Route::name('edit-profile')?>">
 							<?php
 								echo Auth::user()->getFullName();
 							?>
@@ -37,7 +39,7 @@
 				?>
 			</div>
 		</div>
-		
+
 	</div>
 </div>
 
