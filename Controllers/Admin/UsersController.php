@@ -22,4 +22,34 @@ class UsersController extends Controller
         $users = $this->repository->getAllUser();
         return $this->view('admin/user/index', compact('users'));
     }
+
+    public function showFormEdit(){
+
+        $user = (new User())->find($this->data['user_id']);
+
+        if(is_null($user)){
+            return $this->response(['message' => 'Không tìm thấy người dùng']);
+        }
+
+        return $this->view('admin/user/edit-user',compact('user'));
+
+
+    }
+
+    public function delete(){
+        $user = (new User())->find($this->data['user_id']);
+
+        if(is_null($user)){
+            return $this->response([
+                'code'    => 404,
+                'message' => 'Không tìm thấy người dùng'
+            ]);
+        }
+
+        $user->delete();
+        return $this->response([
+            'code'    => 200,
+            'message' => 'Xóa người dùng thành công'
+        ]);
+    }
 }

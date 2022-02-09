@@ -1,5 +1,16 @@
 <script>
 
+    $.ajaxSetup({
+        dataFilter: function(data){
+            try {
+                jsonParseData = JSON.parse(data);
+                return jsonParseData;
+            } catch (e) {
+                return data;
+            }
+        }
+    });
+
 	function initDatepicker(picker){
 
  		picker.datepicker({
@@ -100,6 +111,55 @@
         var setting                    = table.settings();
         setting[0]._iDisplayLength = setting[0].fnRecordsTotal();
         table.draw();
+    }
+
+    function alert(message, type='info', detail=''){
+        Swal.fire(
+            message,
+            detail,
+            type
+        );
+    }
+
+    function confirm(title, runFunction, dismissFunction, type, text) {
+
+	    var type = type == undefined ? 'warning' : type;
+
+        var dismissFunction = dismissFunction === undefined ?
+            function () {
+                return false;
+            }
+            : dismissFunction;
+
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: type,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Có',
+            cancelButtonText: 'Không'
+        }).then(function (e) {
+            e.value ?
+                runFunction() :
+                'cancel' === e.dismiss
+                && dismissFunction();
+        });
+
+    }
+
+    function showLoading(){
+
+	    $('#loading-overlay').show();
+
+	    setTimeout(function(){
+	        hideLoading();
+        },30000);
+    }
+
+    function hideLoading(){
+        $('#loading-overlay').hide();
     }
 
 </script>

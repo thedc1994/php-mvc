@@ -37,4 +37,13 @@
         font-size: 15px;
         text-decoration: none;
     }
+
+    #loading-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #000; opacity: 0.7; z-index: 100; }
+    #loading-overlay .spinner-border{
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+    }
 </style>
